@@ -4,9 +4,9 @@ module Switch
 
     attr_reader :rank, :suit
 
-    RANKS = (2..10).to_a + %w{ Jack Queen King Ace }
-    SUITS = %w{ Clubs Diamonds Hearts Spades }.sort
-    SYMBOLS = { clubs: "♣", diamonds: "♦", hearts: "♥", spades: "♠" }
+    RANKS = (2..10).to_a + %w{ Jack Queen King Ace }.freeze
+    SUITS = %w{ Clubs Diamonds Hearts Spades }.sort.freeze
+    SYMBOLS = { clubs: "♣", diamonds: "♦", hearts: "♥", spades: "♠" }.freeze
 
     InvalidRankError = Class.new(StandardError)
     InvalidSuitError = Class.new(StandardError)
