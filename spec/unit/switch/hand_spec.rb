@@ -42,7 +42,7 @@ describe Switch::Hand do
         end
 
         it "returns a hand containing the drawn card" do
-          expect(hand.draw(deck) === [cards[0]]).to be true
+          expect(hand.draw(deck).match?([cards[0]])).to be true
         end
 
         it "removes the card from the deck" do
@@ -65,7 +65,7 @@ describe Switch::Hand do
           end
 
           it "returns a hand containing all drawn cards" do
-            expect(hand.draw(deck, count) === cards[0...count]).to be true
+            expect(hand.draw(deck, count).match?(cards[0...count])).to be true
           end
 
           it "removes all cards from the deck" do
@@ -87,7 +87,7 @@ describe Switch::Hand do
           end
 
           it "returns a hand containing just the drawn cards" do
-            expect(hand.draw(deck, count) === cards).to be true
+            expect(hand.draw(deck, count).match?(cards)).to be true
           end
 
           it "removes all cards from the deck" do

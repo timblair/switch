@@ -69,7 +69,7 @@ describe Switch::Deck do
     end
   end
 
-  describe "#===" do
+  describe "#match?" do
     let(:cards) { 5.times.map { Switch::Card.random } }
     before(:each) { deck << cards }
 
@@ -78,14 +78,14 @@ describe Switch::Deck do
 
       context "in the same order" do
         it "treats them as equal" do
-          expect(deck === other_deck).to be true
+          expect(deck.match?(other_deck)).to be true
         end
       end
 
       context "in a different order" do
         it "treats them as equal" do
           other_deck.rotate!
-          expect(deck === other_deck).to be true
+          expect(deck.match?(other_deck)).to be true
         end
       end
     end
@@ -93,7 +93,7 @@ describe Switch::Deck do
     context "with two decks with the different cards" do
       it "treats them as unequal" do
         other_deck = deck.dup.tap { |d| d << Switch::Card.random }
-        expect(deck === other_deck).to be false
+        expect(deck.match?(other_deck)).to be false
       end
     end
   end

@@ -16,7 +16,7 @@ module Switch
       cards.each { |card| super(card) }
     end
 
-    def ===(other)
+    def match?(other)
       sort == other.sort
     end
 
