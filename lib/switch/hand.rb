@@ -1,7 +1,6 @@
 module Switch
   class Hand < Deck
-
-    def draw(deck, count=1)
+    def draw(deck, count = 1)
       drawn = Deck.new
       count.times do
         card = deck.draw
@@ -10,6 +9,5 @@ module Switch
       push(*drawn)
       drawn
     end
-
   end
 end

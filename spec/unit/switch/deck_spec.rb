@@ -130,7 +130,7 @@ describe Switch::Deck do
 
         it "leaves the deck empty" do
           deck.draw
-          expect(deck.size).to be (cards.size - 1)
+          expect(deck.size).to eq(cards.size - 1)
         end
       end
     end

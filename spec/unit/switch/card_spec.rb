@@ -93,7 +93,7 @@ describe Switch::Card do
       let(:rank2) { "King" }
 
       it "treats a lower rank as less than a higher one" do
-        expect(card1 <=> card2).to eq (-1)
+        expect(card1 <=> card2).to eq(-1)
       end
 
       it "treats a higher rank as greater than a lower one" do
@@ -105,7 +105,7 @@ describe Switch::Card do
       let(:suit1) { "Hearts" }
 
       it "treats a lexographically lower suit as less than a higher one" do
-        expect(card1 <=> card2).to eq (-1)
+        expect(card1 <=> card2).to eq(-1)
       end
 
       it "treats a lexographically higher rank as greater than a lower one" do
@@ -131,8 +131,8 @@ describe Switch::Card do
       let(:cards) { Switch::Card::SUITS.map { |s| Switch::Card.new(2, s) } }
 
       it "sorts them by lexographic ordering of suit name" do
-        actual = cards.sort.map { |c| c.suit }
-        expected = %w{ Clubs Diamonds Hearts Spades }.sort
+        actual = cards.sort.map(&:suit)
+        expected = %w( Clubs Diamonds Hearts Spades ).sort
         expect(actual).to eq expected
       end
     end

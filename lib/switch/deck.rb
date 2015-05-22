@@ -12,7 +12,7 @@ module Switch
 
     def <<(*cards)
       cards.flatten!
-      raise InvalidCardError unless cards.all? { |card| card.is_a?(Card) }
+      fail InvalidCardError unless cards.all? { |card| card.is_a?(Card) }
       cards.each { |card| super(card) }
     end
 
@@ -20,6 +20,6 @@ module Switch
       sort == other.sort
     end
 
-    alias :draw :shift
+    alias_method :draw, :shift
   end
 end

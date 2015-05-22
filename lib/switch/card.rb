@@ -4,16 +4,16 @@ module Switch
 
     attr_reader :rank, :suit
 
-    RANKS = (2..10).to_a + %w{ Jack Queen King Ace }.freeze
-    SUITS = %w{ Clubs Diamonds Hearts Spades }.sort.freeze
+    RANKS = (2..10).to_a + %w( Jack Queen King Ace ).freeze
+    SUITS = %w( Clubs Diamonds Hearts Spades ).sort.freeze
     SYMBOLS = { clubs: "♣", diamonds: "♦", hearts: "♥", spades: "♠" }.freeze
 
     InvalidRankError = Class.new(StandardError)
     InvalidSuitError = Class.new(StandardError)
 
     def initialize(rank, suit)
-      raise InvalidRankError unless RANKS.include?(rank)
-      raise InvalidSuitError unless SUITS.include?(suit)
+      fail InvalidRankError unless RANKS.include?(rank)
+      fail InvalidSuitError unless SUITS.include?(suit)
       @rank = rank
       @suit = suit
     end
@@ -43,6 +43,6 @@ module Switch
     def ident
       (rank.is_a?(Fixnum) ? rank.to_s : rank[0]) + symbol
     end
-    alias :inspect :ident
+    alias_method :inspect, :ident
   end
 end
