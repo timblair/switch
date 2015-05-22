@@ -10,7 +10,7 @@ describe Switch::Hand do
   end
 
   describe "#draw" do
-    context "from an empty deck" do
+    context "from an empty deck to an empty hand" do
       let(:deck) { Switch::Deck.new }
 
       it "adds no cards to the hand" do
@@ -23,9 +23,13 @@ describe Switch::Hand do
       end
     end
 
-    context "from a non-empty deck" do
+    context "from a non-empty deck to a non-empty hand" do
       let(:cards) { distinct_random_cards(5) }
       let(:deck) { Switch::Deck.build(cards) }
+      let(:hand) do
+        hand_cards = (Switch::Deck.build - deck).sample(5)
+        described_class.new(hand_cards)
+      end
 
       context "when drawing a single card" do
         it "draws the first card" do
