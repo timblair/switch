@@ -23,13 +23,10 @@ module Switch
     end
 
     def <=>(other)
-      return nil unless other.class == self.class
-      return 0 if rank == other.rank && suit == other.suit
-      if rank == other.rank
-        SUITS.rindex(suit) < SUITS.rindex(other.suit) ? -1 : 1
-      else
-        RANKS.rindex(rank) < RANKS.rindex(other.rank) ? -1 : 1
-      end
+      return nil unless other.is_a? Card
+      return 0 if ident == other.ident
+      return suit_value < other.suit_value ? -1 : 1 if rank == other.rank
+      rank_value < other.rank_value ? -1 : 1
     end
 
     def to_s
@@ -44,5 +41,13 @@ module Switch
       (rank.is_a?(Fixnum) ? rank.to_s : rank[0]) + symbol
     end
     alias_method :inspect, :ident
+
+    def rank_value
+      RANKS.rindex(rank) + 2
+    end
+
+    def suit_value
+      SUITS.rindex(suit)
+    end
   end
 end
