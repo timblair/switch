@@ -6,7 +6,7 @@ module Switch
 
     InvalidCardError = Class.new(StandardError)
 
-    def self.build(cards = ALL_CARDS.dup)
+    def self.build(cards = ALL_CARDS)
       new.tap { |deck| deck << cards }
     end
 
