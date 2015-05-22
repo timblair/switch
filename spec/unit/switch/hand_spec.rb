@@ -24,7 +24,7 @@ describe Switch::Hand do
     end
 
     context "from a non-empty deck" do
-      let(:cards) { 5.times.map { Switch::Card.random } }
+      let(:cards) { distinct_random_cards(5) }
       let(:deck) { Switch::Deck.build(cards) }
 
       context "when drawing a single card" do
