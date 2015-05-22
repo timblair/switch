@@ -11,7 +11,7 @@ module Switch
     end
 
     def <<(*cards)
-      cards = [cards].flatten
+      cards.flatten!
       raise InvalidCardError unless cards.all? { |card| card.is_a?(Card) }
       cards.each { |card| super(card) }
     end
