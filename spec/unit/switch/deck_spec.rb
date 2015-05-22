@@ -159,7 +159,7 @@ describe Switch::Deck do
 
       context "in a different order" do
         it "treats them as equal" do
-          other_deck.shuffle!
+          other_deck.rotate!
           expect(deck === other_deck).to be true
         end
       end
